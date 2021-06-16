@@ -35,6 +35,11 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
+      - name: Install and Build 🔧 
+        run: |
+          npm install
+          npm run build
+
       - name: Build and Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
@@ -42,4 +47,3 @@ jobs:
           folder: build # The folder the action should deploy.
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BUILD_SCRIPT: npm install && npm run build

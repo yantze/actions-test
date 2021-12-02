@@ -1,4 +1,4 @@
-name: Tag Release
+name: RELEASE
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
 
       - run: npm install
       - run: |
-        cd src
+          cd src
       - run: npm run build
 
       - uses: "marvinpinto/action-automatic-releases@latest"

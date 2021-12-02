@@ -16,10 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: npm install
       - run: |
           cd src
-      - run: npm run build
+          ls
+      - run: |
+          ls
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:

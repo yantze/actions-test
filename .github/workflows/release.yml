@@ -1,0 +1,40 @@
+name: Tag Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node_version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: npm install
+      - run: |
+        cd src
+      - run: npm run build
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: true
+          files: |
+            LICENSE
+            dist/*.dmg
+
+      - name: Release ✅
+        if: ${{ success() }}
+        run: |
+          echo 执行成功
+
+      - name: Release 🚨
+        if: ${{ failure() }}
+        run: |
+          echo 执行失败

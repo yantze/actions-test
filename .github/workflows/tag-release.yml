@@ -42,7 +42,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            LICENSE.txt
+            LICENSE
             build/*
 
       - name: Tests ✅
